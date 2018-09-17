@@ -39,11 +39,3 @@ To improve the project, include both projects on the same deployable and have a 
 ## Authors
 
 * **Jaziel Fernando Leandro**
-
-
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc

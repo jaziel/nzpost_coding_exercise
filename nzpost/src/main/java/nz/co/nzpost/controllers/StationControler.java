@@ -17,7 +17,7 @@ import nz.co.nzpost.repositories.StationRepository;
 
 @RestController
 @RequestMapping(path = "/stations", produces = "application/json")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class StationControler {
 	
 	private StationRepository stationRepository;
@@ -36,7 +36,7 @@ public class StationControler {
 	@GetMapping("/")
 	public List<StationDTO> getAllStations() {
 		List<Station> result = stationRepository.findAll();
-		return this.convertCityResult(result);
+		return this.convertStationsResult(result);
 	}
 
 	private List<PathDTO> convertPathResult(List<Destination> result) {
@@ -46,7 +46,7 @@ public class StationControler {
 		return path;
 	}
 	
-	private List<StationDTO> convertCityResult(List<Station> result) {
+	private List<StationDTO> convertStationsResult(List<Station> result) {
 		List<StationDTO> path = result.stream()
 				.map(d -> new StationDTO(d.getName()))
 				.collect(Collectors.toList());

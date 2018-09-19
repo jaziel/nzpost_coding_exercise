@@ -14,7 +14,7 @@ class PathForm extends Component {
   }
 
   componentDidMount() {
-    let url = BASE_URL + '/cities/';
+    let url = BASE_URL + '/stations/';
     fetch(url).then( results => {
       let data = results.json();
       return data;
@@ -31,7 +31,7 @@ class PathForm extends Component {
     const source = this.state.source;
     const destination =  this.state.destination;
 
-    let url = BASE_URL +"/cities/path?source="+source+"&destination="+destination;
+    let url = BASE_URL +"/stations/path?source="+source+"&destination="+destination;
     fetch(url).then( results => {
       let data = results.json();
       return data;

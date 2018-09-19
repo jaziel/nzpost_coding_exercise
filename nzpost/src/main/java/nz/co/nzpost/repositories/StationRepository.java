@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import nz.co.nzpost.domain.Station;
 import nz.co.nzpost.domain.Destination;
+import nz.co.nzpost.domain.Station;
 
-@Service
+@Repository
 public interface StationRepository extends CrudRepository<Station, Integer> {
 	
 	@Transactional(readOnly = true)

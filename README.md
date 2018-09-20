@@ -8,7 +8,7 @@ This is a project to complete the NZPost coding exercise.
 
 1.JDK8 (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-2.Neo4j graph databse with APOC enabled. (https://neo4j.com/)
+2.Neo4j graph databse with APOC enabled. (https://neo4j.com/) (optional)
 
 3.Maven (https://maven.apache.org/)
 
@@ -18,7 +18,7 @@ This is a project to complete the NZPost coding exercise.
 ### Installing
 
 Copy both projects (nzpost and nzpost-client).
-Create a graph on neo4j and load the data (test_data.cypher file inside nzpost projet) with the nodes and relationships. Update the application.properties inside nzpost project ( src/main/resoruces) with the correct user/password.
+ If running with a Neo4j server, reate a graph on neo4j and load the data (test_data.cypher file inside nzpost projet) with the nodes and relationships. Change the active profile on spring to neo4jDB and update the application-neo4jDB.properties inside nzpost project ( src/main/resoruces) with the correct uri/user/password. Otherwise the application will start a standAlone Neo4j graph database and load the data.
 Execute mvn spring-boot:run inside the folder of nzpost project.
 Execute npm run inside the folder of nzpost-client project.
 Open the page http://localhost:3000 .

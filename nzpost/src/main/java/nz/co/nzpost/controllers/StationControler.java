@@ -3,21 +3,19 @@ package nz.co.nzpost.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import nz.co.nzpost.domain.Station;
-import nz.co.nzpost.domain.StationDTO;
 import nz.co.nzpost.domain.Destination;
 import nz.co.nzpost.domain.PathDTO;
+import nz.co.nzpost.domain.Station;
+import nz.co.nzpost.domain.StationDTO;
 import nz.co.nzpost.repositories.StationRepository;
 
 @RestController
 @RequestMapping(path = "/stations", produces = "application/json")
-@CrossOrigin
 public class StationControler {
 	
 	private StationRepository stationRepository;

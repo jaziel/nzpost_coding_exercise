@@ -67,9 +67,9 @@ public class Neo4jConfig {
 					.resolveDependency(Procedures.class);
 			try {
 				procedures.registerProcedure(PathFinding.class);
-			} catch (KernelException e) {
-				log.error("Could not load the APOC procedures.", e);
-				throw e;
+			} catch (KernelException ex) {
+				log.error("Could not load the APOC procedures.", ex);
+				throw ex;
 			}
         }
     }

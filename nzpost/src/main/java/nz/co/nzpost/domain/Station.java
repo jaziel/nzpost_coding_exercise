@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @NodeEntity
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id")
 public class Station {
 	@Id
 	@GeneratedValue
@@ -22,7 +22,7 @@ public class Station {
 	@Property(name = "name")
 	private String name;
 
-	private Station() {
+	public Station() {
 	};
 
 	public Station(String name) {

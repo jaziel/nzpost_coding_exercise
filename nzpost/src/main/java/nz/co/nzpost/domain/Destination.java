@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @RelationshipEntity(type = "DISTANCE")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@relationshipId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@relationshipId")
 public class Destination {
 	@Id
 	@GeneratedValue
@@ -22,6 +22,10 @@ public class Destination {
 	private Station source;
 	@EndNode
 	private Station destination;
+
+	public Destination() {
+		super();
+	}
 
 	public Integer getValue() {
 		return value;

@@ -1,6 +1,5 @@
 package nz.co.nzpost.controllers;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,7 +63,7 @@ public class StationControler {
 	@ExceptionHandler(Exception.class)
 	private ResponseEntity<ErrorDetails> handleException(Exception ex, WebRequest request) {
 		log.error("Exception on StationController:", ex);
-		ErrorDetails error = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
+		ErrorDetails error = new ErrorDetails(ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}

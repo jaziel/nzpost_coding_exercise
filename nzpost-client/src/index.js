@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import pathReducer from './reducers/pathReducer';
+import { fetchStations } from './actions/pathActions'
+import configureStore from './store/configureStore';  
 
-const store = createStore(pathReducer);
+const store = configureStore();
+store.dispatch(fetchStations());
 
 ReactDOM.render(
 <Provider store={store}>

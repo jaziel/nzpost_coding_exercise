@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { BASE_URL } from './config'
 
 class PathForm extends Component {
@@ -6,7 +7,7 @@ class PathForm extends Component {
   constructor() {
     super();
     this.state = {
-      cities:[],
+      stations:[],
       source: '',
       destination: '',
       path: []
@@ -19,9 +20,9 @@ class PathForm extends Component {
       let data = results.json();
       return data;
     }).then( data => {
-      let cities = data.map( city => {return city});
+      let stations = data.map( station => {return station});
       this.setState(
-        { cities: cities}
+        { stations: stations}
       );
     })
   }
@@ -51,9 +52,9 @@ class PathForm extends Component {
   }
 
   render() {
-    let cities = this.state.cities;
-    let optionItems = cities.map((city) =>
-            <option key={city.name}>{city.name}</option>
+    let stations = this.state.stations;
+    let optionItems = stations.map((station) =>
+            <option key={station.name}>{station.name}</option>
     );
     let path = this.state.path;
     let pathRows = path.map((path) =>
@@ -69,11 +70,11 @@ class PathForm extends Component {
         <h1>Find Shortest Path</h1>
         <form onSubmit={this.handleSubmit}> 
         <select required value={this.state.source} onChange={this.handleChangeSource}>
-          <option value="">Select a Source City</option>
+          <option value="">Select a Source Station</option>
           {optionItems}
         </select><br /><br />
         <select required value={this.state.destination} onChange={this.handleChangeDestination}>
-          <option value="">Select a Destination City</option>
+          <option value="">Select a Destination Station</option>
           {optionItems}
         </select><br /><br />
         <button>Find Path</button>
@@ -98,4 +99,5 @@ class PathForm extends Component {
   }
 
 }
+
 export default PathForm;

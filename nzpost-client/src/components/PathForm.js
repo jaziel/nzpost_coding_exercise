@@ -1,46 +1,24 @@
 import React, { Component } from 'react';
-
-import { BASE_URL } from './config'
+import { connect } from 'react-redux';
+import { fetchStations, fetchPath } from '../actions/pathActions'
 
 class PathForm extends Component {
 
   constructor() {
     super();
     this.state = {
-      stations:[],
       source: '',
-      destination: '',
-      path: []
+      destination: ''
     }
   }
 
-  componentDidMount() {
-    let url = BASE_URL + '/stations/';
-    fetch(url).then( results => {
-      let data = results.json();
-      return data;
-    }).then( data => {
-      let stations = data.map( station => {return station});
-      this.setState(
-        { stations: stations}
-      );
-    })
-  }
 
   handleSubmit = (e) => {
     e.preventDefault();
     const source = this.state.source;
     const destination =  this.state.destination;
+    this.props.fetchPath(source, destination);
 
-    let url = BASE_URL +"/stations/path?source="+source+"&destination="+destination;
-    fetch(url).then( results => {
-      let data = results.json();
-      return data;
-    }).then( path => {
-      this.setState(
-        { path: path}
-      );
-    })
   }
 
   handleChangeSource = (e) => {
@@ -52,18 +30,19 @@ class PathForm extends Component {
   }
 
   render() {
-    let stations = this.state.stations;
-    let optionItems = stations.map((station) =>
+
+    let stations = this.props.stations;
+    let optionItems = stations.length !== 0 ? (stations.map((station) =>
             <option key={station.name}>{station.name}</option>
-    );
-    let path = this.state.path;
-    let pathRows = path.map((path) =>
+    )) : null;
+    let path = this.props.path;
+    let pathRows =  path.length !== 0 ? (path.map((path) =>
       <tr key={path.source}>
         <td>{path.source}</td>
         <td>{path.destination}</td>
         <td>{path.distance}</td>
       </tr>
-    );
+    )) : null;
 
     return (
       <div>
@@ -100,4 +79,13 @@ class PathForm extends Component {
 
 }
 
-export default PathForm;
+function mapStateToProps(state) {
+  return {
+    stations: state.stations,
+    source: '',
+    destination: '',
+    path: state.path
+  }
+}
+
+export default connect(mapStateToProps, {fetchStations, fetchPath})(PathForm);

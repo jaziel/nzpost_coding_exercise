@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
-import PathForm from './PathForm';
+import PathForm from './components/PathForm';
 
 class App extends Component {
   render() {

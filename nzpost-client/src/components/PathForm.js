@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchStations, fetchPath } from '../actions/pathActions'
+import { fetchStations, fetchPath } from '../actions/pathActions' 
 
 class PathForm extends Component {
 
@@ -33,7 +33,7 @@ class PathForm extends Component {
 
     let stations = this.props.stations;
     let optionItems = stations.length !== 0 ? (stations.map((station) =>
-            <option key={station.name}>{station.name}</option>
+            <option key={station.name} value={station.name}>{station.name}</option>
     )) : null;
     let path = this.props.path;
     let pathRows =  path.length !== 0 ? (path.map((path) =>
@@ -82,8 +82,6 @@ class PathForm extends Component {
 function mapStateToProps(state) {
   return {
     stations: state.stations,
-    source: '',
-    destination: '',
     path: state.path
   }
 }

@@ -25,13 +25,13 @@ import nz.co.nzpost.repositories.StationRepository;
 @ControllerAdvice
 @RestController
 @RequestMapping(path = "/stations", produces = "application/json")
-public class StationControler {
+public class StationController {
 	
-	private final static Logger log = LoggerFactory.getLogger(StationControler.class);
+	private final static Logger log = LoggerFactory.getLogger(StationController.class);
 
 	private StationRepository stationRepository;
 
-	public StationControler(StationRepository stationRepository) {
+	public StationController(StationRepository stationRepository) {
 		this.stationRepository = stationRepository;
 	}
 
@@ -48,14 +48,14 @@ public class StationControler {
 		return this.convertStationsResult(result);
 	}
 
-	private List<PathDTO> convertPathResult(List<Destination> result) {
+	protected List<PathDTO> convertPathResult(List<Destination> result) {
 		List<PathDTO> path = result.stream()
 				.map(d -> new PathDTO(d.getSource().getName(), d.getDestination().getName(), d.getValue()))
 				.collect(Collectors.toList());
 		return path;
 	}
 
-	private List<StationDTO> convertStationsResult(List<Station> result) {
+	protected List<StationDTO> convertStationsResult(List<Station> result) {
 		List<StationDTO> path = result.stream().map(d -> new StationDTO(d.getName())).collect(Collectors.toList());
 		return path;
 	}

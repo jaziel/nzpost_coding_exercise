@@ -3,6 +3,10 @@
 # dependencies
 /node_modules
 
+# build dependencies
+nzpost-client/node/
+nzpost/.factorypath
+
 # testing
 /coverage
 

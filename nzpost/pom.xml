@@ -11,6 +11,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.3.RELEASE</version>
+		<relativePath/>
 	</parent>
 
 	<properties>
@@ -64,6 +65,11 @@
 			<artifactId>hamcrest-library</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>nzpost</groupId>
+    		<artifactId>nzpost-client</artifactId>
+    		<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -74,79 +80,6 @@
 				<configuration>
 					<addResources>true</addResources>
 				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>prepare-package</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/target/classes/public</outputDirectory>
-							<resources>
-								<resource>
-									<directory>${basedir}/../nzpost-client/build</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.github.eirslett</groupId>
-				<artifactId>frontend-maven-plugin</artifactId>
-				<version>1.6</version>
-				<configuration>
-					<workingDirectory>${basedir}/../nzpost-client/</workingDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<id>install node and npm</id>
-						<goals>
-							<goal>install-node-and-npm</goal>
-						</goals>
-						<configuration>
-							<nodeVersion>v8.12.0</nodeVersion>
-							<yarnVersion>6.4.1</yarnVersion>
-						</configuration>
-					</execution>
-					<execution>
-						<id>npm</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<phase>generate-resources</phase>
-						<configuration>
-							<arguments>install</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>npm build</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<phase>prepare-package</phase>
-						<configuration>
-							<arguments>run build</arguments>
-						</configuration>
-					</execution>
-					<!-- <execution> -->
-					<!-- <id>test</id> -->
-					<!-- <goals> -->
-					<!-- <goal>yarn</goal> -->
-					<!-- </goals> -->
-					<!-- <phase>test</phase> -->
-					<!-- <configuration> -->
-					<!-- <arguments>test</arguments> -->
-					<!-- <environmentVariables> -->
-					<!-- <CI>true</CI> -->
-					<!-- </environmentVariables> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
